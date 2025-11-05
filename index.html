@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificación de Acta de Defunción - Plantilla de Capacitación</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            .no-print {
+                display: none;
+            }
+            .certificate {
+                box-shadow: none;
+                margin: 0;
+                page-break-after: avoid;
+            }
+        }
+        
+        body {
+            font-family: 'Times New Roman', serif;
+            background: #f5f5f5;
+            padding: 20px;
+            color: #000;
+        }
+        
+        .certificate {
+            width: 21cm;
+            min-height: 29.7cm;
+            margin: 0 auto;
+            background: #fafaf8;
+            padding: 1cm;
+            border: 2px solid #000;
+            position: relative;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 72px;
+            font-weight: bold;
+            color: rgba(0, 0, 0, 0.08);
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 1;
+            letter-spacing: 8px;
+        }
+        
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .header-top {
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        
+        .header h1 {
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin: 12px 0;
+        }
+        
+        .header-subtitle {
+            font-size: 10px;
+            font-style: italic;
+            color: #333;
+            margin-top: 8px;
+        }
+        
+        .intro-text {
+            font-size: 11px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+        
+        .field-group {
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-decoration: underline;
+        }
+        
+        .row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 12px;
+        }
+        
+        .field {
+            flex: 1;
+            display: flex;
+            align-items: baseline;
+            font-size: 11px;
+        }
+        
+        .field label {
+            margin-right: 8px;
+            white-space: nowrap;
+            font-weight: normal;
+        }
+        
+        .field input[type="text"],
+        .field input[type="date"],
+        .field input[type="time"] {
+            flex: 1;
+            border: none;
+            border-bottom: 1px solid #000;
+            background: transparent;
+            padding: 2px 4px;
+            font-family: inherit;
+            font-size: 11px;
+            font-style: italic;
+        }
+        
+        .field input:focus {
+            outline: none;
+            background: rgba(0, 0, 0, 0.02);
+        }
+        
+        .field-label-below {
+            font-size: 9px;
+            font-style: italic;
+            text-align: center;
+            margin-top: 2px;
+            color: #555;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            border: 1px solid #000;
+        }
+        
+        .notes-area {
+            margin: 20px 0;
+        }
+        
+        .notes-lines {
+            border: 1px solid #000;
+            padding: 8px;
+            min-height: 80px;
+        }
+        
+        .notes-lines textarea {
+            width: 100%;
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            font-size: 11px;
+            resize: vertical;
+            min-height: 70px;
+        }
+        
+        .footer-section {
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid #000;
+        }
+        
+        .footer-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 12px;
+            align-items: center;
+        }
+        
+        .signature-area {
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .signature-line {
+            border-top: 1px solid #000;
+            width: 300px;
+            margin: 60px auto 8px;
+        }
+        
+        .signature-label {
+            font-size: 10px;
+            font-weight: bold;
+        }
+        
+        .seal-placeholder {
+            width: 80px;
+            height: 80px;
+            border: 2px dashed #666;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            text-align: center;
+            color: #666;
+            margin: 20px auto;
+            padding: 10px;
+            line-height: 1.2;
+        }
+        
+        .document-number {
+            position: absolute;
+            bottom: 1cm;
+            left: 1cm;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        
+        .buttons {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .buttons button {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            margin: 0 8px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+        
+        .buttons button:hover {
+            background: #555;
+        }
+        
+        .acta-number {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+        }
+        
+        .acta-number input {
+            width: 30px;
+            text-align: center;
+            border: 1px solid #000;
+            padding: 2px;
+            font-family: inherit;
+            font-size: 11px;
+        }
+    </style>
+</head>
+<body>
+    <div class="buttons no-print">
+        <button onclick="window.print()">Imprimir / Guardar como PDF</button>
+        <button onclick="clearForm()">Limpiar Formulario</button>
+    </div>
+    
+    <div class="certificate">
+        <div class="watermark">EJEMPLO · NO VÁLIDO</div>
+        
+        <div class="content">
+            <div class="header">
+                <div class="header-top">
+                    REPÚBLICA DE HONDURAS<br>
+                    REGISTRO NACIONAL DE LAS PERSONAS<br>
+                    REGISTRO CIVIL MUNICIPAL
+                </div>
+                <h1>CERTIFICACIÓN DE ACTA DE DEFUNCIÓN</h1>
+                <div class="header-subtitle">Formato de capacitación · Solo para fines educativos</div>
+            </div>
+            
+            <div class="intro-text">
+                El infrascrito Registrador Civil Municipal CERTIFICA que en el Archivo de Defunciones que se tiene en esta oficina, se encuentra
+                el acta de defunción número: 
+                <span class="acta-number">
+                    <input type="text" maxlength="1" style="width: 25px;"> 
+                    <input type="text" maxlength="1" style="width: 25px;"> 
+                    <input type="text" maxlength="1" style="width: 25px;"> 
+                    <input type="text" maxlength="1" style="width: 25px;"> 
+                    - <input type="text" maxlength="1" style="width: 25px;"> 
+                    <input type="text" maxlength="1" style="width: 25px;"> 
+                    <input type="text" maxlength="1" style="width: 25px;"> 
+                    <input type="text" maxlength="1" style="width: 25px;"> 
+                    - <input type="text" maxlength="1" style="width: 25px;"> 
+                    <input type="text" maxlength="1" style="width: 25px;"> 
+                    <input type="text" maxlength="1" style="width: 25px;"> 
+                    <input type="text" maxlength="1" style="width: 25px;"> 
+                    <input type="text" maxlength="1" style="width: 25px;">
+                </span>
+                ubicada en el folio <input type="text" style="width: 60px;"> del tomo <input type="text" style="width: 60px;">
+                del Año <input type="text" style="width: 60px;">, y que pertenece a:
+            </div>
+            
+            <div class="field-group">
+                <div class="row">
+                    <div class="field">
+                        <label>a)</label>
+                        <div style="flex: 1;">
+                            <input type="text" style="width: 100%;">
+                            <div class="field-label-below">Primer Apellido</div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>b)</label>
+                        <div style="flex: 1;">
+                            <input type="text" style="width: 100%;">
+                            <div class="field-label-below">Segundo Apellido</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="field">
+                        <label>c)</label>
+                        <div style="flex: 1;">
+                            <input type="text" style="width: 100%;">
+                            <div class="field-label-below">Nombre</div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>d)</label>
+                        <div style="flex: 1;">
+                            <input type="text" style="width: 100%;">
+                            <div class="field-label-below">Nacionalidad</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="field">
+                        <label>e) Sexo</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <label>F</label>
+                                <input type="checkbox" name="sexo" value="F">
+                            </div>
+                            <div class="checkbox-item">
+                                <label>M</label>
+                                <input type="checkbox" name="sexo" value="M">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>f) Edad</label>
+                        <input type="text" style="width: 100px;">
+                    </div>
+                    <div class="field">
+                        <label>g)</label>
+                        <div style="flex: 1;">
+                            <input type="text" style="width: 100%;">
+                            <div class="field-label-below">Identidad</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="field-group">
+                <div class="section-title">Datos de Defunción:</div>
+                
+                <div class="row">
+                    <div class="field">
+                        <label>a)</label>
+                        <div style="flex: 1;">
+                            <input type="text" style="width: 100%;">
+                            <div class="field-label-below">Barrio o Caserio</div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>b)</label>
+                        <div style="flex: 1;">
+                            <input type="text" style="width: 100%;">
+                            <div class="field-label-below">Ciudad o Aldea</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="field">
+                        <label>c)</label>
+                        <div style="flex: 1;">
+                            <input type="text" style="width: 100%;">
+                            <div class="field-label-below">Municipio</div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>d)</label>
+                        <div style="flex: 1;">
+                            <input type="text" style="width: 100%;">
+                            <div class="field-label-below">Departamento</div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>e)</label>
+                        <div style="flex: 1;">
+                            <input type="text" style="width: 100%;">
+                            <div class="field-label-below">País</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="field">
+                        <label>f) Fecha de defunción:</label>
+                        <div style="flex: 1;">
+                            <input type="date" style="width: 100%;">
+                            <div class="field-label-below">Fecha</div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>g) Hora:</label>
+                        <div style="flex: 1;">
+                            <input type="time" style="width: 100%;">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="field">
+                        <label>h) Permiso de entierro:</label>
+                        <div style="flex: 1;">
+                            <input type="text" style="width: 100%;">
+                            <div class="field-label-below">Fecha</div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>i)</label>
+                        <div style="flex: 1;">
+                            <input type="text" style="width: 100%;">
+                            <div class="field-label-below">Cementerio</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="field" style="flex: 2;">
+                        <label>j) Lugar:</label>
+                        <input type="text" style="width: 100%;">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="notes-area">
+                <div class="section-title">Notas marginales autorizadas:</div>
+                <div class="notes-lines">
+                    <textarea placeholder="Escriba aquí las notas marginales..."></textarea>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <div class="footer-row">
+                    <div class="field">
+                        <label>Extendida en</label>
+                        <div style="flex: 1;">
+                            <input type="text" style="width: 100%;">
+                            <div class="field-label-below">Municipio</div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div style="flex: 1;">
+                            <input type="text" style="width: 100%;">
+                            <div class="field-label-below">Departamento</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-row">
+                    <div class="field">
+                        <label>a los</label>
+                        <input type="text" style="width: 60px;">
+                        <label>días del mes de</label>
+                        <input type="text" style="width: 120px;">
+                        <label>del DOS MIL</label>
+                        <input type="text" style="width: 100px;">
+                    </div>
+                </div>
+                
+                <div class="signature-area">
+                    <div class="signature-line"></div>
+                    <div class="signature-label">FIRMA Y SELLO DEL REGISTRADOR CIVIL</div>
+                    <div class="seal-placeholder">
+                        SELLO DE MUESTRA<br>NO OFICIAL
+                    </div>
+                </div>
+            </div>
+            
+            <div class="document-number">
+                RNP <input type="text" style="width: 120px; border-bottom: 1px solid #000; background: transparent;">
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function clearForm() {
+            if (confirm('¿Está seguro de que desea limpiar todos los campos?')) {
+                document.querySelectorAll('input[type="text"], input[type="date"], input[type="time"], textarea').forEach(input => {
+                    input.value = '';
+                });
+                document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+            }
+        }
+        
+        // Handle checkbox groups (only one can be selected)
+        document.querySelectorAll('input[name="sexo"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    document.querySelectorAll('input[name="sexo"]').forEach(cb => {
+                        if (cb !== this) cb.checked = false;
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
